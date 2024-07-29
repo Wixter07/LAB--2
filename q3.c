@@ -1,29 +1,45 @@
-#include <stdio.h>
+# include <stdio.h>
  
-void tower(int n, char source, char temp, char destination) 
-{
-    if (n == 1) 
-    {
-
-        printf("Move disk 1 from %c to %c\n", source, destination);
-        return;
-    }
- 
-    tower(n - 1, source, destination, temp);
- 
-    printf("Move disk %d from %c to %c\n", n, source, destination);
- 
-    tower(n - 1, temp, source, destination);
-}
+void lsearch(int arr[], int num, int n);
  
 int main() 
 {
-    int n;
+int num, element;
  
-    printf("Enter the number of disks: ");
-    scanf("%d", &n);
+printf("Enter number of elements: ");
+scanf("%d", &num);
  
-    tower(n, 'A', 'B', 'C');
+int arr[100];
+printf("Enter elements of array:\n");
+
+for(int i = 0; i < num; i++) 
+ {
+    scanf("%d", &arr[i]);
+ }
+ 
+    printf("Enter number to be searched: ");
+    scanf("%d", &element);
+ 
+    lsearch(arr, num, element);
  
     return 0;
+}
+  
+void lsearch(int arr[], int num, int n) 
+{
+    int ip = 0;
+ 
+for(int i = 0; i < num; i++) 
+{
+    if(arr[i] == n) 
+    {
+        printf("Number found at position %d.\n", i + 1);
+        ip = 1;
+        break;
+    }
+}
+ 
+    if(ip == 0) {
+        printf("Number not found.\n");
+    }
 }

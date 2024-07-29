@@ -1,27 +1,46 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
  
-int palindrome(char input[], int lefti, int righti) {
-    if (lefti >= righti) return 1;
+int main()
+{
+   int row,col,i,j,a[10][10],count = 0;
+   printf("Enter row:");
+   scanf("%d",&row);
+   printf("Enter column:");
+   scanf("%d",&col);
+   printf("Enter the elements of the matrix\n");
  
-    if (input[lefti] == input[righti]) {
-        return palindrome(input, lefti + 1, righti - 1);
-    }
+   for(i = 0; i < row; i++)
+   {
+      for(j = 0; j < col; j++)
+      {
+         scanf("%d",&a[i][j]);
+      }
+   }
  
-    return 0;
-}
+   printf("Elements are:\n");
  
-int main() {
-    char input[100];
+   for(i = 0; i < row; i++)
+   { 
+      for(j = 0; j < col; j++)
+      {
+         printf("%d ",a[i][j]);
+      }
+      printf("\n");
+   }
  
-    printf("Enter a string for palindrome check: ");
-    scanf("%s", input);
  
-    if (palindrome(input, 0, strlen(input) - 1)) {
-        printf("%s is a Palindrome\n", input);
-    } else {
-        printf("%s is not a Palindrome\n", input);
-    }
+   for(i = 0; i < row; i++)
+   {
+      for(j = 0; j < col; j++)
+      {
+         if(a[i][j] == 0)
+            count++;
+      }
+   }
  
-    return 0;
+   if(count > ((row * col)/2))
+      printf("Matrix is a sparse matrix\n");
+   else
+      printf("Matrix is not sparse matrix\n");
 }
